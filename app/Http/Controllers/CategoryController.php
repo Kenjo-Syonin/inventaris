@@ -33,4 +33,25 @@ class CategoryController extends Controller
 
         return redirect()->route('categories.index');
     }
+    public function edit($id)
+    {
+        $category = Category::findOrFail($id);
+        return view('admin.categories.edit', compact('category'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'division_pj' => 'required|string',
+        ]);
+
+        $category = Category::findOrFail($id);
+        $category->update([
+            'name' => $request->name,
+            'division_pj' => $request->division_pj,
+        ]);
+
+        return redirect()->route('categories.index');
+    }
 }

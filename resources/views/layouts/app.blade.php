@@ -57,7 +57,7 @@
 <body class="d-flex">
 
     <div class="sidebar py-3 px-2 flex-shrink-0">
-        <h4 class="text-center fw-bold mb-4 text-white">SMK Wikrama</h4>
+        <h4 class="text-center fw-bold mb-4 text-white">Inventaris</h4>
         <ul class="nav flex-column">
 
             @if (Auth::user()->role === 'admin')

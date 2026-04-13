@@ -30,7 +30,7 @@
                             <td>{{ $category->division_pj ?? '-' }}</td>
                             <td>{{ $category->items_count }}</td>
                             <td>
-                                <a href="{{--{{ route('categories.edit', $category->id) }}--}}" class="btn btn-warning btn-sm">
+                                <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-warning btn-sm">
                                     <i class="bi bi-pencil"></i> Edit
                                 </a>
                             </td>

@@ -39,6 +39,37 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('success', 'Akun berhasil ditambahkan!');
     }
 
+    public function edit($id)
+{
+    $user = User::findOrFail($id);
+    return view('admin.users.edit', compact('user'));
+}
+
+public function update(Request $request, $id)
+{
+    $user = User::findOrFail($id);
+    
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email,'.$user->id,
+        'role' => 'required|in:admin,staff',
+    ]);
+
+    $data = [
+        'name' => $request->name,
+        'email' => $request->email,
+        'role' => $request->role,
+    ];
+
+    // Jika user mengisi password baru, maka update passwordnya
+    if ($request->filled('password')) {
+        $data['password'] = Hash::make($request->password);
+    }
+
+    $user->update($data);
+
+    return redirect()->route('users.index', ['role' => $request->role]);
+}
     public function destroy($id)
     {
         $user = User::findOrFail($id);

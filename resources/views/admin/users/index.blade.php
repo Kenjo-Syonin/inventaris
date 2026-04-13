@@ -40,7 +40,9 @@
                         <td>{{ $user->email }}</td>
                         <td><span class="badge {{ $user->role === 'admin' ? 'bg-primary' : 'bg-secondary' }}">{{ ucfirst($user->role) }}</span></td>
                         <td>
-                            <button class="btn btn-sm text-white" style="background-color: #6f42c1;">Edit</button>
+                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm">
+                                <i class="bi bi-pencil"></i> Edit
+                            </a>
                             @if(auth()->id() !== $user->id)
                             <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Hapus akun ini?')">
                                 @csrf
