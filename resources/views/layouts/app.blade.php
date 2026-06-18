@@ -67,7 +67,7 @@
                 </li>
 
                 <li class="nav-item mt-3">
-                    <small class="text-muted px-3 text-uppercase" style="font-size: 0.75rem;">Master Data</small>
+                    <small class="text-muted px-3 text-uppercase" style="font-size: 0.75rem; background-color: grey; border-radius: 5px;">Master Data</small>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('items.index') }}" class="nav-link"><i class="bi bi-box-seam"></i> Data Barang</a>
